@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 const DB = require('../dbConnection');
 const Router = express.Router();
 
-
 // Created the get all route for events
 Router.get('/all', (req: any, res: any) => {
     // SQL query for selection of all events
@@ -39,12 +38,12 @@ Router.post('/create', (req: any, res: any) => {
     const uid = uuidv4();
 
     // Query for creating a particular event
-    const createEventQuery = `INSERT INTO eventinformation (uid, title, about, isEventOnline, mm, dd, yr, streetAddress, zipCode, state, city, zoomLink) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);`;
+    const createEventQuery = `INSERT INTO eventinformation (uid, title, about, isEventOnline, mm, dd, yr, streetAddress, zipCode, state, city, zoomLink, tags) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);`;
     // Query for creating a tags entry specific to a particular event
     const createTagsQuery = `INSERT INTO eventtags (uid, typeOf, label) VALUES (?,?,?);`;
 
     // Databse query for the creation of the event with all missing value insertions done
-    DB.query(createEventQuery, [ uid, title, description, isEventOnline, month, day, year, streetAddress, zipCode, state, city, zoomLink ],  (err:any, results:any) => {
+    DB.query(createEventQuery, [ uid, title, description, isEventOnline, month, day, year, streetAddress, zipCode, state, city, zoomLink, JSON.stringify(tags) ],  (err:any, results:any) => {
 
         // If there is an error, send it
         if (err) {
@@ -81,14 +80,15 @@ Router.get('/search/:searchTerm', (req: any, res: any) => {
     // Query for the event tags by event UID
     const getEventTagsQuery = `SELECT typeOf, label FROM eventtags WHERE uid = ?;`
     DB.query(eventTitleOrDescriptionQuery,  (err: any, results: any) => {
+        // If there is an error, send it
         if (err) {
             res.send({ hasErr: true, err });
+        // Return results
         } else {
             res.send({ hasErr: false, results });
         };
     });
 
 });
-
 
 module.exports = Router;

@@ -3,7 +3,7 @@ import express from 'express';
 const eventsRoute = require('./Routes/eventsRoute');
 const DB = require("./dbConnection");
 const expressApp = express();
-const PORT = 10500;
+const PORT = 10501;
 
 expressApp.use(express.json());
 expressApp.use(express.urlencoded({ extended: true }));
