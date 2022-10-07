@@ -6,7 +6,8 @@ export interface EventTagDataInterface {
 export interface EventLocationDataInterface {
     streetAddress: string,
     zipcode: number,
-    state: string
+    state: string,
+    city: string,
     zoomLink?: string
 };
 

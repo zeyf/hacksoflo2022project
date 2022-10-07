@@ -6,6 +6,7 @@ export default interface EventCardInterface {
     isUserRegisteredForEvent?: boolean,
     isEventOnline: boolean,
     description: string,
+    title: string,
     tags: EventTagDataInterface[],
     date: EventDateInterface,
     location: EventLocationDataInterface  
