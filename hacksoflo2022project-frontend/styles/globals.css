@@ -2,13 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .nav-item {
+    @apply duration-500 text-center h-full w-full hover:bg-blue-600 p-3 col-span-2;
+  }
+  .input-checkbox {
+    @apply w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500;
+  }
+  .label-checkbox {
+    @apply ml-2 text-sm font-medium text-gray-900;
+  }
+  .container {
+    @apply h-full w-full ;
+  }
+  .aaa {
+    @apply ;
+  }
+  .aaa {
+    @apply ;
+  }
+  .aaa {
+    @apply ;
+  }
+
+}
 
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
