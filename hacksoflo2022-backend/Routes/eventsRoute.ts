@@ -28,10 +28,8 @@ Router.post('/create', (req: any, res: any) => {
 
     // Destructure all of the required information from the body
     const {
-        title, description, isEventOnline,
-        date: { month, day, year },
-        location: { streetAddress, zipCode, state, city, zoomLink },
-        tags
+        title, about, isEventOnline, mm, dd, yr, streetAddress, zipCode, state, city, zoomLink, tags
+
     } = req.body;
 
     // Generate a unique identifier for the event for low-collision joining on MySQL
@@ -43,7 +41,7 @@ Router.post('/create', (req: any, res: any) => {
     const createTagsQuery = `INSERT INTO eventtags (uid, typeOf, label) VALUES (?,?,?);`;
 
     // Databse query for the creation of the event with all missing value insertions done
-    DB.query(createEventQuery, [ uid, title, description, isEventOnline, month, day, year, streetAddress, zipCode, state, city, zoomLink, JSON.stringify(tags) ],  (err:any, results:any) => {
+    DB.query(createEventQuery, [ uid, title, about, isEventOnline, mm, dd, yr, streetAddress, zipCode, state, city, zoomLink, JSON.stringify(tags) ],  (err:any, results:any) => {
 
         // If there is an error, send it
         if (err) {
@@ -58,6 +56,7 @@ Router.post('/create', (req: any, res: any) => {
                         res.send({ hasErr: true, err });
                     } else {
                     // Return the results
+                        console.log("SUCCESS!!!!")
                         res.send({ hasErr: false, results });
                     };
 

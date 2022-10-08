@@ -2,12 +2,16 @@ import { EventDateInterface, EventTagDataInterface, EventLocationDataInterface }
 
 export default interface EventCardInterface {
     uid: string,
-    isEventSavedByUser?: boolean,
-    isUserRegisteredForEvent?: boolean,
-    isEventOnline: boolean,
-    description: string,
+    isEventOnline: number,
+    about: string,
     title: string,
-    tags: EventTagDataInterface[],
-    date: EventDateInterface,
-    location: EventLocationDataInterface  
+    tags: string,
+    mm: string,
+    dd: string,
+    yr: string
+    streetAddress: string,
+    zoomLink: string,
+    city: string,
+    state: string,
+    zipCode: string
 };

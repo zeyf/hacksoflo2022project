@@ -5,7 +5,7 @@ export interface EventTagDataInterface {
 
 export interface EventLocationDataInterface {
     streetAddress: string,
-    zipcode: number,
+    zipCode: string,
     state: string,
     city: string,
     zoomLink?: string
@@ -13,6 +13,6 @@ export interface EventLocationDataInterface {
 
 export interface EventDateInterface {
     month: 'January' | 'February' | 'March' | 'April' | 'May' | 'June' | 'July' | 'August' | 'September' | 'October' | 'November' | 'December',
-    day: number,
-    year: number
+    day: string,
+    year: string
 };
