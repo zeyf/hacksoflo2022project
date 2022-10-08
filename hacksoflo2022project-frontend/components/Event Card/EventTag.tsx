@@ -1,13 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import { EventTagDataInterface } from '../../interfaces/GeneralInterfaces';
 
-const EventTag:React.FC<EventTagDataInterface> = ({ type, data }) => {
+const EventCard = ({ typeOf, label }:any) => {
+
     return (
-        <Link className={`py-4 px-8 bg-blue-500 text-white`} href={`/events/${type}/${data}`}>
-            { data }
+        <Link href={`/tags/${typeOf}/${label}`} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            #{ label }
         </Link>
     );
 };
 
-export default EventTag;
+export default EventCard;
